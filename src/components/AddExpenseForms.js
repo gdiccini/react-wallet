@@ -13,6 +13,8 @@ class AddExpenseForms extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.addExpense = this.addExpense.bind(this);
     this.setId = this.setId.bind(this);
+    this.createId = this.createId.bind(this);
+
     this.state = {
       value: 0,
       currency: 'USD',
@@ -41,12 +43,26 @@ class AddExpenseForms extends React.Component {
     });
   }
 
+  createId() {
+    const { expenses } = this.props;
+    if (expenses.length === 0) {
+      return 0;
+    }
+    return expenses.reduce((acc, expense) => {
+      if (acc <= expense.id) {
+        acc = (expense.id + 1);
+      }
+      return acc;
+    }, 0);
+  }
+
   async addExpense() {
-    const { receiveCurrencies, sumExpense, currencies, expenses } = this.props;
+    const { receiveCurrencies, sumExpense, currencies } = this.props;
 
     await receiveCurrencies();
 
-    const id = expenses.length;
+    console.log(this.createId());
+    const id = this.createId();
     const { value, currency, method, tag, description } = this.state;
     const expense = { id, value, currency, method, tag, description };
     expense.exchangeRates = { ...currencies };

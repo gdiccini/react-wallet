@@ -1,0 +1,38 @@
+.container {
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 15px;
+  display: flex;
+  height: 80vh;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+}
+
+.description {
+  border-right: 1px solid white;
+  color: #fff;
+  height: 90%;
+  margin: auto 0;
+  width: 50%;
+}
+
+.login {
+  align-items: center;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  height: 90%;
+  justify-content: center;
+  margin: auto 0;
+  width: 50%;
+}
+
+.login input {
+  width: 67%;
+}
+
+.login button {
+  width: 67%;
+}

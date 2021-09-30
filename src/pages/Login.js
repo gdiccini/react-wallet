@@ -1,8 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { makeLogin } from '../actions';
+
+import '../styles/Login.css';
 
 class Login extends React.Component {
   constructor(props) {
@@ -10,7 +12,7 @@ class Login extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.validateEmail = this.validateEmail.bind(this);
     this.verifyInputs = this.verifyInputs.bind(this);
-    this.handelLogin = this.handelLogin.bind(this);
+    // this.handelLogin = this.handelLogin.bind(this);
 
     this.state = {
       email: '',
@@ -45,52 +47,56 @@ class Login extends React.Component {
     }
   }
 
-  handelLogin() {
-    const { email } = this.state;
-    const { login } = this.props;
-    login(email);
-  }
+  // handelLogin() {
+  //   const { email } = this.state;
+  //   const { login } = this.props;
+  //   login(email);
+  // }
 
   render() {
     const { email, password, btnDisabled } = this.state;
     return (
-      <div>
-        <h1>Página de login do TrybeWallet</h1>
-        <div>
-          <input
-            type="text"
-            placeholder="Email"
-            data-testid="email-input"
-            name="email"
-            value={ email }
-            onChange={ this.handleChange }
-          />
-          <input
-            type="password"
-            placeholder="Senha"
-            data-testid="password-input"
-            name="password"
-            value={ password }
-            onChange={ this.handleChange }
-          />
-          <Link to="/carteira">
-            <button
-              type="button"
-              disabled={ btnDisabled }
-              onClick={ this.handelLogin }
-            >
-              Entrar
-            </button>
-          </Link>
+      <main>
+        <div className="container">
+          <section className="description">
+            <h1>Wallet</h1>
+          </section>
+          <section className="login">
+            <input
+              type="text"
+              placeholder="Email"
+              data-testid="email-input"
+              name="email"
+              value={ email }
+              onChange={ this.handleChange }
+            />
+            <input
+              type="password"
+              placeholder="Senha"
+              data-testid="password-input"
+              name="password"
+              value={ password }
+              onChange={ this.handleChange }
+            />
+            <Link to="/carteira">
+              <button
+                type="button"
+                disabled={ btnDisabled }
+                // onClick={ this.handelLogin }
+              >
+                Entrar
+              </button>
+            </Link>
+          </section>
         </div>
-      </div>
+      </main>
     );
   }
 }
 
-Login.propTypes = {
-  login: PropTypes.func.isRequired,
-};
+// Login.propTypes = {
+//   login: PropTypes.func.isRequired,
+// };
 
 const mapDispatchToProps = (dispatch) => ({
   login: (email) => dispatch(makeLogin(email)),

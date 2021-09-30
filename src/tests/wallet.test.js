@@ -305,8 +305,11 @@ describe('2 - Crie uma página para sua carteira com as seguintes característic
     test('Ao clicar no botão para remover uma despesa, o valor correspondente deve ser subtraído e a despesa total deve ser atualizada no header', () => {
       const { store } = renderWithRouterAndStore(<Wallet />, '/carteira', initial);
       const deleteBtn = screen.getAllByTestId('delete-btn')[0];
-
+      const field = screen.getByTestId('total-field');
+      console.log(field.textContent);
+      console.log(store.getState().wallet.expenses);
       fireEvent.click(deleteBtn);
+      console.log(store.getState().wallet.expenses);
 
       const newExpenses = [
         {

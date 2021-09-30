@@ -1,4 +1,9 @@
-import { LOGIN, RECEIVE_CURRENCIES_SUCCESS, ADD_EXPENSE } from './actionTypes';
+import {
+  LOGIN,
+  RECEIVE_CURRENCIES_SUCCESS,
+  ADD_EXPENSE, REMOVE_EXPENSE,
+} from './actionTypes';
+
 import getCurrencies from '../services/apiRequests';
 
 export const makeLogin = (email) => ({
@@ -21,4 +26,9 @@ export function fetchCurrencies() {
 export const addExpense = (expense) => ({
   type: ADD_EXPENSE,
   expense,
+});
+
+export const removeExpense = (id) => ({
+  type: REMOVE_EXPENSE,
+  id,
 });
